@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <HelloWorld />
+    <HelloWorld message="Hello World!" />
+    <!-- messageの値を渡す -->
   </div>
 </template>
 
