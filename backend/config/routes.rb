@@ -5,6 +5,7 @@
 #                                       GET    /events/:id(.:format)                                                                    events#show
 #                                       POST   /events(.:format)                                                                        events#create
 #                                       PUT    /events/:id(.:format)                                                                    events#update
+#                                       DELETE /events/:id(.:format)                                                                    events#destroy
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
 #         rails_sendgrid_inbound_emails POST   /rails/action_mailbox/sendgrid/inbound_emails(.:format)                                  action_mailbox/ingresses/sendgrid/inbound_emails#create
@@ -29,4 +30,5 @@ Rails.application.routes.draw do
   get '/events/:id', to: 'events#show'
   post '/events', to: 'events#create'
   put '/events/:id', to: 'events#update'
+  delete '/events/:id', to: 'events#destroy'
 end
