@@ -2,8 +2,9 @@
 #
 #                                Prefix Verb   URI Pattern                                                                              Controller#Action
 #                                events GET    /events(.:format)                                                                        events#index
-#                                       GET    /events/:id(.:format)                                                                    events#show
 #                                       POST   /events(.:format)                                                                        events#create
+#                                 event GET    /events/:id(.:format)                                                                    events#show
+#                                       PATCH  /events/:id(.:format)                                                                    events#update
 #                                       PUT    /events/:id(.:format)                                                                    events#update
 #                                       DELETE /events/:id(.:format)                                                                    events#destroy
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
@@ -26,9 +27,5 @@
 #                  rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
-  get '/events', to: 'events#index'
-  get '/events/:id', to: 'events#show'
-  post '/events', to: 'events#create'
-  put '/events/:id', to: 'events#update'
-  delete '/events/:id', to: 'events#destroy'
+  resources :events, only:[:index, :show, :create, :update, :destroy]
 end
