@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <HelloWorld message="Hello World!" />
-    <!-- messageの値を渡す -->
+    <DateCalendar />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import DateCalendar from "./components/DateCalendar.vue";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    DateCalendar,
   },
 };
 </script>
