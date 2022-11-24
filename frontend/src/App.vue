@@ -1,11 +1,13 @@
 <template>
-  <div id="app">
-    <DateCalendar />
-  </div>
+  <v-app>
+    <v-main>
+      <DateCalendar />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import DateCalendar from "./components/DateCalendar.vue";
+import DateCalendar from "./components/DateCalendar";
 
 export default {
   name: "App",
