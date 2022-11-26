@@ -22,18 +22,8 @@
         @click:event="showEvent"
       ></v-calendar>
     </v-sheet>
-    <v-dialog :value="event !== null">
-      <div v-if="event !== null">
-        <v-card>
-          <h1>イベント詳細</h1>
-          <p>name: {{ event.name }}</p>
-          <p>start: {{ event.start.toLocaleString() }}</p>
-          <p>end: {{ event.end.toLocaleString() }}</p>
-          <p>timed: {{ event.timed }}</p>
-          <p>description: {{ event.description }}</p>
-          <p>color: {{ event.color }}</p>
-        </v-card>
-      </div>
+    <v-dialog :value="event !== null" @click:outside="closeDialog" width="600">
+      <EventDetailDialog v-if="event !== null" />
     </v-dialog>
   </div>
 </template>
@@ -41,9 +31,13 @@
 <script>
 import { format } from "date-fns";
 import { mapGetters, mapActions } from "vuex";
+import EventDetailDialog from "./EventDetailDialog";
 
 export default {
   name: "DateCalendar",
+  components: {
+    EventDetailDialog,
+  },
   data: () => ({
     value: format(new Date(), "yyyy/MM/dd"),
   }),
@@ -60,6 +54,9 @@ export default {
     },
     showEvent({ event }) {
       this.setEvent(event);
+    },
+    closeDialog() {
+      this.setEvent(null);
     },
   },
 };
