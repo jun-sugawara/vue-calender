@@ -1,3 +1,4 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
   <div>
     <v-sheet height="6vh" class="d-flex align-center">
