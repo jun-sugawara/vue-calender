@@ -1,5 +1,5 @@
-/* eslint-disable prettier/prettier */
-import { format, addHours } from 'date-fns';
+import { format, addHours } from "date-fns";
+import { ja } from "date-fns/locale";
 
 export const getTimeIntervalList = () => {
   // 15分間隔の時間のリストを返す
@@ -9,14 +9,15 @@ export const getTimeIntervalList = () => {
   return timeList;
 };
 
-export const getDefaultStartAndEnd = date => {
+export const getDefaultStartAndEnd = (date) => {
   // デフォルトの開始時刻と終了時刻を返す
-  const currentTime = format(new Date(), 'HH:mm:ss');
+  const currentTime = format(new Date(), "HH:mm:ss");
   const datetime = new Date(`${date} ${currentTime}`);
-  const start = format(addHours(datetime, 1), 'yyyy/MM/dd HH:00:00');
-  const end = format(addHours(datetime, 2), 'yyyy/MM/dd HH:00:00');
+  // eslint-disable-next-line no-undef
+  const start = format(addHours(datetime, 1), "yyyy/MM/dd HH:00:00");
+  const end = format(addHours(datetime, 2), "yyyy/MM/dd HH:00:00");
   return [start, end];
-}
+};
 
 export const isGreaterEndThanStart = (startDate, startTime, endDate, endTime, allDay) => {
   // 終了日時が開始日時の後になっているか
@@ -29,4 +30,9 @@ export const isGreaterEndThanStart = (startDate, startTime, endDate, endTime, al
     const end = new Date(`${endDate} ${endTime}`).getTime();
     return end > start;
   }
+};
+
+export const formatDateToJa = (date) => {
+  // 日付を日本語表記で返す
+  return format(new Date(date), "M月d日(E)", { locale: ja });
 };
