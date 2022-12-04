@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import DateCalendar from "./components/DateCalendar";
+import DateCalendar from "./components/pages/DateCalendar";
 
 export default {
   name: "App",
