@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    render json: Event.all    
+    render json: Event.all
   end
 
   def show
@@ -8,7 +8,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    # パラメータの値でイベントデータを作成する
     event = Event.new(event_params)
     if event.save
       render json: event
@@ -18,7 +17,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    # 指定したidのイベントデータの値を更新する
     event = Event.find(params[:id])
     if event.update(event_params)
       render json: event
@@ -28,6 +26,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    # 指定したidのイベントデータを削除する
     event = Event.find(params[:id])
     event.destroy!
     render json: event
