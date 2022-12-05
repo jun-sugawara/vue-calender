@@ -33,15 +33,17 @@ const actions = {
   setCalendar({ commit }, calendar) {
     commit("setCalendar", calendar);
   },
-  async updateCalendar({ commit }, calendar) {
+  async updateCalendar({ dispatch, commit }, calendar) {
     const response = await axios.put(`${apiUrl}/calendars/${calendar.id}`, calendar);
     commit("updateCalendar", response.data);
+    dispatch("events/fetchEvents", null, { root: true });
   },
-  async deleteCalendar({ commit }, id) {
+  async deleteCalendar({ dispatch, commit }, id) {
     const res = confirm("削除を実行します。この操作は取り消せません");
     if (res) {
       const response = await axios.delete(`${apiUrl}/calendars/${id}`);
       commit("removeCalendar", response.data);
+      dispatch("events/fetchEvents", null, { root: true });
     }
   },
 };
